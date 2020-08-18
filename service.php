@@ -39,15 +39,6 @@ class Service
         $this->nbr2=0;
         $this->result=" ";
 
-
-        $tabd = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
-        $tabr = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
-
-
-
-        $tabdrev = array_reverse($tabd);
-        $tabrrev = array_reverse($tabr);
-
         $this->tabsplit1 = str_split($this->op1);
 
 
@@ -63,12 +54,6 @@ class Service
 
         $resultAddDec=$nb1+$nb2;
 
-
-       // var_dump($this->nbr2);
-
-       // $this->convertDecToRomaine( $this->nbr2);
-
-       //  var_dump($this->convertDecToRomaine( $this->nbr2));
         return $this->convertDecToRomaine($resultAddDec);
     }
 
