@@ -14,18 +14,20 @@ class Service
     private $nbr2;
     private $result;
 
-   /* function __construct($op1,$op2)
-    {
 
-        $this->op1 = $op1;
-        $this->op2 = $op2;
-        $this->tabres = [];
-        $this->tabsplit = [];
+    public function controllData($op1)
+    {
+        $tabr = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
+        if (in_array($op1,$tabr )){
+
+        }
+        else{
+
+        }
+
 
     }
-   */
-      // contructeur ?
-
+    
     public function additionRomaine($op1,$op2)
     {
 

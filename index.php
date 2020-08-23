@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+
+?>
+
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -14,6 +20,7 @@
                             </div>
                             <div id="output">
                                 <p id="output-value"></p>
+                                5+5=10
                             </div>
                         </div>
 

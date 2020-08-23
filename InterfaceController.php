@@ -1,9 +1,17 @@
 <?php
+session_start();
+include_once('service.php');
 
+        
         if(isset($_POST['op1']))
         {
 			$op1=$_POST['op1'];
-			var_dump($op1);
+
+			var_dump($_POST['op1']);
+
+	        $controllObj =new Service();
+
+	        $res=$controllObj->controllData($op1);   
 		}
 		if(isset($_POST['plus']))
 		{
