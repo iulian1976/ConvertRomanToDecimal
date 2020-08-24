@@ -13,19 +13,39 @@ class Service
     private $nbr1;
     private $nbr2;
     private $result;
+    private $tab3= ['0','0','0','0'];
+
+    public function __construct()
+    {
+        $this->op1="";
+        $this->op2="";
+
+    }
+
+    public function getOp1(){
+        return $this->op1;
+    }
+
+    public function getOp2(){
+        return $this->op2;
+    }
 
 
     public function controllData($op1)
     {
-        $tabr = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
-        if (in_array($op1,$tabr )){
+        $tabToken = ["I","II","III", "IV", "V","VI","VII","VIII", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
+        if (in_array($op1,$tabToken )){
+            $this->op1=$op1;
+           // var_dump($this->op1);
 
+            $this->tab3[0]=$this->op1;
+            $this->tab3[1]='+';
+
+             return  $this->tab3;
         }
         else{
-
+            var_dump('hii2');
         }
-
-
     }
     
     public function additionRomaine($op1,$op2)

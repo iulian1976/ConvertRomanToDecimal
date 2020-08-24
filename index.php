@@ -1,6 +1,17 @@
 <?php
 session_start();
+include_once('service.php');
 
+  var_dump($_GET['res']);
+
+     if(!isset($_GET['res'])) {
+	     $res="";
+	     $plus="+";
+     }
+     else
+     {
+         $res=$_GET['res'];
+     }
 
 ?>
 
@@ -20,7 +31,10 @@ session_start();
                             </div>
                             <div id="output">
                                 <p id="output-value"></p>
-                                5+5=10
+                            <?php
+                                echo $res;
+
+                            ?>
                             </div>
                         </div>
 
