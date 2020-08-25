@@ -15,7 +15,7 @@ class Service
     private $result;
     private $tab3= ['0','0','0','0'];
 
-    public function __construct()
+    public function __construct()  
     {
         $this->op1="";
         $this->op2="";
@@ -37,9 +37,7 @@ class Service
         if (in_array($op1,$tabToken )){
             $this->op1=$op1;
            // var_dump($this->op1);
-
             $this->tab3[0]=$this->op1;
-            $this->tab3[1]='+';
 
              return  $this->tab3;
         }
@@ -47,6 +45,22 @@ class Service
             var_dump('hii2');
         }
     }
+
+    public function controllPlus($plus,$op1)
+    {
+        $plusArray=['+'] ;
+        if (in_array($plus,$plusArray )){
+            // var_dump($this->op1);
+            $this->tab3[0]=$op1;
+            $this->tab3[1]=$plus;
+            return  $this->tab3;
+        }
+        else{
+            var_dump('hii2');
+        }
+    }
+    
+    
     
     public function additionRomaine($op1,$op2)
     {

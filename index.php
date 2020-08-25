@@ -2,15 +2,16 @@
 session_start();
 include_once('service.php');
 
-  var_dump($_GET['res']);
 
-     if(!isset($_GET['res'])) {
+     if(!isset($_SESSION['res'])) {
 	     $res="";
-	     $plus="+";
+	     $plus="";
      }
      else
      {
-         $res=$_GET['res'];
+
+         $res=$_SESSION['res'];
+         //var_dump($res);
      }
 
 ?>
@@ -32,7 +33,36 @@ include_once('service.php');
                             <div id="output">
                                 <p id="output-value"></p>
                             <?php
-                                echo $res;
+                            // var_dump($res);
+
+
+
+                                if($res[0]==="0"){
+
+                                }
+                                else{
+
+                                   echo $res[0];
+                                }
+	                            if($res[1]=="0"){
+
+	                            }
+	                            else{
+	                                echo $res[1];
+	                            }
+	                            if($res[2]=="0"){
+
+	                            }
+	                            else{
+		                            echo $res[2];
+	                            }
+	                            if($res[3]=="0"){
+
+	                            }
+	                            else{
+		                            echo $res[3];
+	                            }
+
 
                             ?>
                             </div>

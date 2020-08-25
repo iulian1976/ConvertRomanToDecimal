@@ -7,14 +7,25 @@ include_once('service.php');
 			$op1=$_POST['op1'];
 	        $controllObj =new Service();
 	        $res=$controllObj->controllData($op1);
-           //  var_dump($res);
-	         header('location:index.php?res='.$res);
+	        $_SESSION['res'] = $res;
+
+	         header('location:index.php');
 
         }
 		if(isset($_POST['plus']))
 		{
 			$plus=$_POST['plus'];
-			var_dump($plus);
+			$controllPlus =new Service();
+			$res=$_SESSION['res'];
+
+			var_dump($res[0]);
+			$res=$controllPlus->controllPlus($plus,$res[0]);
+			//var_dump($res);
+			// reset session
+			$_SESSION['res']= $res;
+
+			//header('location:index.php');
+
 		}
 		if(isset($_POST['egal']))
 		{
