@@ -17,14 +17,15 @@ include_once('service.php');
 			$plus=$_POST['plus'];
 			$controllPlus =new Service();
 			$res=$_SESSION['res'];
+			//var_dump($res[0]);
 
-			var_dump($res[0]);
 			$res=$controllPlus->controllPlus($plus,$res[0]);
 			//var_dump($res);
+			session_unset();
 			// reset session
 			$_SESSION['res']= $res;
-
-			//header('location:index.php');
+			var_dump($_SESSION['res']);
+			header('location:index.php');   
 
 		}
 		if(isset($_POST['egal']))
