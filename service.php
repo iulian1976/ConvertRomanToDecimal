@@ -14,6 +14,8 @@ class Service
     private $nbr2;
     private $result;
     private $tab3= ['0','0','0','0'];
+    private $tabToken = ["I","II","III", "IV", "V","VI","VII","VIII", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
+    private $flag="";
 
     public function __construct()  
     {
@@ -29,12 +31,35 @@ class Service
     public function getOp2(){
         return $this->op2;
     }
+    
+    public function controllSessionArray($res)
+    {
+
+        If($res[0]==="0" && $res[1]==="0" && $res[2]==="0" && $res[3]==="0"){
+            $this->flag="A";
+        }
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && $res[2]==="0" && $res[3]==="0"){
+            $this->flag="B";
+        }
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[0],$this->tabToken ) && $res[3]==="0"){
+            $this->flag="C";
+        }
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[0],$this->tabToken ) && $res[3]==="="){
+            $this->flag="D";
+        }
+        else
+        {
+            var_dump("Illegal operation");
+        }
+
+        return $this->flag;
+    }
 
 
     public function controllData($op1)
     {
-        $tabToken = ["I","II","III", "IV", "V","VI","VII","VIII", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
-        if (in_array($op1,$tabToken )){
+
+        if (in_array($op1,$this->tabToken )){
             $this->op1=$op1;
            // var_dump($this->op1);
             $this->tab3[0]=$this->op1;
