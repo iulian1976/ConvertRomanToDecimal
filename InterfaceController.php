@@ -4,29 +4,68 @@ include_once('service.php');
 
            $controllSession =new Service();
            $res=$_SESSION['res'];
-           $situationSession= $controllSession-> controllSessionArray($res);
-           $res=$_SESSION['res'];
 
-           if($situationSession==="A"){
+           if(isset($_POST['op1'])){
+	           $situationSession= $controllSession-> controllSessionArray($res);
+	           $op1=$_POST['op1'];
+	           $res= $controllSession-> addOperator1($res,$op1);
+	           session_unset();
+	           $_SESSION['res'] = $res;
 
-	           if(isset($_POST['op1']))
+	           header('location:index.php');
+           }
+			if(isset($_POST['plus'])){
+                $plus=$_POST['plus'];
+				$situationSession= $controllSession-> controllSessionArray($res,$plus);
+				$res= $controllSession->addPlus($res);
+			}
+
+			//var_dump($res);
+
+          // var_dump($situationSession);  // mai trebuie un caz cand se incarca pagina pria data si este 0000
+
+          /*
+
+           if(($situationSession==="A") || ($situationSession==="B")){
+
+	           if(isset($_POST['op1']) && (!isset($_POST['plus'])) )
 	           {
 		           $op1=$_POST['op1'];
 		           $controllObj =new Service();
 		           $res=$controllObj->controllData($op1);
+		           session_unset();
 		           $_SESSION['res'] = $res;
 
-		           // header('location:index.php');
+		            header('location:index.php');
 	           }
+	           if( (!isset($_POST['op1'])) && ($_POST['plus']) )
+	           {
+		           $controllObj =new Service();
+		           $res=$_SESSION['res'];
+		           $plus=$_POST['plus'];
+
+
+		           $addPlus= $controllObj->addPlus($plus,$res);
+
+		           //var_dump($addPlus);
+
+		           session_unset();
+		           $_SESSION['res'] = $$addPlus;
+		          // var_dump( $_SESSION['res']);
+
+		          // header('location:index.php');
+	           }
+
+
+
+
            }
-           if($situationSession==="B"){
+           elseif($situationSession==="C"){
 
 	           if(isset($_POST['plus']))
 	           {
 		           $plus=$_POST['plus'];
 		           $controllPlus =new Service();
-		           $res=$_SESSION['res'];
-		           //var_dump($res[0]);
 
 		           $res=$controllPlus->controllPlus($plus,$res[0]);
 		           //var_dump($res);
@@ -38,7 +77,7 @@ include_once('service.php');
 	           }
 
            }
-           if($situationSession==="C"){
+           elseif($situationSession==="D"){
 		           $op1=$_POST['op1'];
 		           $controllObj =new Service();
 		           $res=$controllObj->controllData($op1);
@@ -46,7 +85,7 @@ include_once('service.php');
 
 		           // header('location:index.php');
            }
-           if($situationSession==="D"){
+           elseif($situationSession==="D"){
 
 	           if(isset($_POST['egal']))
 	           {
@@ -57,7 +96,10 @@ include_once('service.php');
 	           }
 
 
-			}
+			*/
+
+
+
 
 
 

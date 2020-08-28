@@ -4,14 +4,14 @@ include_once('service.php');
 
 
      if(!isset($_SESSION['res'])) {
+	     $_SESSION['res']=['0','0','0','0'];
 	     $res="";
 	     $plus="";
      }
-     else
+     elseif(isset($_SESSION['res']))
      {
-
          $res=$_SESSION['res'];
-         //var_dump($res);
+
      }
 
 ?>

@@ -34,11 +34,10 @@ class Service
     
     public function controllSessionArray($res)
     {
-
         If($res[0]==="0" && $res[1]==="0" && $res[2]==="0" && $res[3]==="0"){
             $this->flag="A";
         }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && $res[2]==="0" && $res[3]==="0"){
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]=="0" && $res[2]=="0" && $res[3]=="0"){
             $this->flag="B";
         }
         elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[0],$this->tabToken ) && $res[3]==="0"){
@@ -49,10 +48,34 @@ class Service
         }
         else
         {
-            var_dump("Illegal operation");
+           // var_dump($res);
+           // var_dump("Illegal operation");
         }
 
+        //var_dump($res);
+
         return $this->flag;
+    }
+
+    public function addOperator1($res,$op1)
+    {
+            $this->tab3=$res;
+            $this->tab3[0]=$op1;
+            return  $this->tab3;
+    }
+
+    public function addPlus($res,$plus)
+    {
+        $plusArray=['+'] ;
+        if (in_array($plus,$plusArray )){
+
+            $this->tab3=$res;
+            $this->tab3[1]=$plus;
+            return  $this->tab3;
+        }
+        else{
+            var_dump('hii2');
+        }
     }
 
 
@@ -71,19 +94,7 @@ class Service
         }
     }
 
-    public function controllPlus($plus,$op1)
-    {
-        $plusArray=['+'] ;
-        if (in_array($plus,$plusArray )){
-            // var_dump($this->op1);
-            $this->tab3[0]=$op1;
-            $this->tab3[1]=$plus;
-            return  $this->tab3;
-        }
-        else{
-            var_dump('hii2');
-        }
-    }
+    
     
     
     
