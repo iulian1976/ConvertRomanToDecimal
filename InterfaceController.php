@@ -2,8 +2,11 @@
 session_start();
 include_once('service.php');
 
+
            $controllSession =new Service();
            $res=$_SESSION['res'];
+
+           var_dump($_SESSION(['res']));   
 
            if(isset($_POST['op1'])){
 	           $situationSession= $controllSession-> controllSessionArray($res);

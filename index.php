@@ -5,7 +5,7 @@ include_once('service.php');
 
      if(!isset($_SESSION['res'])) {
 	     $_SESSION['res']=['0','0','0','0'];
-	     $res="";
+	     $res=['0','0','0','0'];
 	     $plus="";
      }
      elseif(isset($_SESSION['res']))
@@ -25,7 +25,7 @@ include_once('service.php');
 	<body>
 		<div id="container">
 			<div id="calculator">
-                <form action="InterfaceController.php" method="post">
+                <form action="InterfaceController.php" method="post">       
                         <div id="result">
                             <div id="history">
                                 <p id="history-value"></p>
@@ -33,10 +33,6 @@ include_once('service.php');
                             <div id="output">
                                 <p id="output-value"></p>
                             <?php
-                            //var_dump($res);
-
-
-
                                 if($res[0]==="0"){
 
                                 }
