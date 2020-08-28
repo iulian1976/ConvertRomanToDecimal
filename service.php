@@ -63,6 +63,12 @@ class Service
             $this->tab3[0]=$op1;
             return  $this->tab3;
     }
+    public function addOperator2($res,$op1)
+    {
+        $this->tab3=$res;
+        $this->tab3[2]=$op1;
+        return  $this->tab3;
+    }
 
     public function addPlus($res,$plus)
     {
