@@ -16,8 +16,12 @@ include_once('service.php');
            }
 			if(isset($_POST['plus'])){
                 $plus=$_POST['plus'];
-				$situationSession= $controllSession-> controllSessionArray($res,$plus);
-				$res= $controllSession->addPlus($res);
+				$situationSession= $controllSession-> controllSessionArray($res);
+				$res= $controllSession->addPlus($res,$plus);
+				session_unset();
+				$_SESSION['res'] = $res;
+                //var_dump($res);
+				header('location:index.php');
 			}
 
 			//var_dump($res);
