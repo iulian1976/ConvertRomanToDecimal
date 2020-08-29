@@ -4,8 +4,8 @@ include_once('service.php');
 
 
      if(!isset($_SESSION['res'])) {
-	     $_SESSION['res']=['0','0','0','0'];
-	     $res=['0','0','0','0'];
+	     $_SESSION['res']=['0','0','0','0','0'];
+	     $res=['0','0','0','0','0'];
 	     $plus="";
      }
      elseif(isset($_SESSION['res']))
@@ -56,7 +56,7 @@ include_once('service.php');
 
 	                            }
 	                            else{
-		                            echo $res[3];
+		                            echo $res[3].$res[4];            
 	                            }
 
 

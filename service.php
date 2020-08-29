@@ -13,7 +13,7 @@ class Service
     private $nbr1;
     private $nbr2;
     private $result;
-    private $tab3= ['0','0','0','0'];
+    private $tab3= ['0','0','0','0','0'];
     private $tabToken = ["I","II","III", "IV", "V","VI","VII","VIII", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
     private $flag="";
 
@@ -34,16 +34,17 @@ class Service
     
     public function controllSessionArray($res)
     {
-        If($res[0]==="0" && $res[1]==="0" && $res[2]==="0" && $res[3]==="0"){
+        var_dump($res);
+        If($res[0]==="0" && $res[1]==="0" && $res[2]==="0" && $res[3]==="0"&&$res[4]==="0"){
             $this->flag="A";
         }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]=="0" && $res[2]=="0" && $res[3]=="0"){
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]=="0" && $res[2]=="0" && $res[3]=="0"&&$res[4]==="0"){
             $this->flag="B";
         }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[0],$this->tabToken ) && $res[3]==="0"){
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" &&$res[1]=="0" && $res[3]==="0"&& $res[4]==="0"){
             $this->flag="C";
         }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[0],$this->tabToken ) && $res[3]==="="){
+        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[2],$this->tabToken ) && $res[3]==="0"&& $res[4]==="0"){
             $this->flag="D";
         }
         else
@@ -86,6 +87,7 @@ class Service
 
     public function actionClean($res,$clean)
     {
+        var_dump($res);
         $plusArray=['*'] ;
         if (in_array($clean,$plusArray )){
 

@@ -16,6 +16,6 @@ session_start();
 
       //var_dump($res->additionRomaine($op1,$op2));
 
-        header('location:result.php?res='.$result);
+       // header('location:result.php?res='.$result);
   ?>        
 
