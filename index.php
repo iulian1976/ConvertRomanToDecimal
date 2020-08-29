@@ -25,7 +25,7 @@ include_once('service.php');
 	<body>
 		<div id="container">
 			<div id="calculator">
-                <form action="InterfaceController.php" method="post">       
+                <form action="InterfaceController.php" method="post">
                         <div id="result">
                             <div id="history">
                                 <p id="history-value"></p>
@@ -66,7 +66,9 @@ include_once('service.php');
 
                         <div id="keyboard">
                             <input class="plusoperator" type='submit' name = 'plus'    value = '+' id="+">
-                            <input class="egaloperator" type='submit' name = 'egal'    value = '=' id="="><br>
+                            <input class="egaloperator" type='submit' name = 'egal'    value = '=' id="=">
+                            <input class="egaloperator" type='submit' name = 'clean'    value = '*' id="="><br>
+
                             <input class="number" type='submit' name = 'op1'    value = 'I' id="1">
                             <input class="number" type='submit' name = 'op1'    value = 'II' id="2">
                             <input class="number" type='submit' name = 'op1'    value = 'III' id="3">

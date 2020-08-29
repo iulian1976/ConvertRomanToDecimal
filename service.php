@@ -84,6 +84,29 @@ class Service
         }
     }
 
+    public function actionClean($res,$clean)
+    {
+        $plusArray=['*'] ;
+        if (in_array($clean,$plusArray )){
+
+            for ($i=count($res)-1;$i>=0;$i--){
+                if($res[$i]!="0")
+                {
+                    $res[$i]="0";
+                    break;
+                }
+            }
+
+            $this->tab3=$res;
+
+            return  $this->tab3;
+        }
+        else{
+            var_dump('hii2');
+        }
+    }
+
+
 
     public function controllData($op1)
     {
