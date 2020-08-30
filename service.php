@@ -32,43 +32,23 @@ class Service
         return $this->op2;
     }
     
-    public function controllSessionArray($res)
+    public function controllSessionArray($res,$op)
     {
-        var_dump($res);
-        If($res[0]==="0" && $res[1]==="0" && $res[2]==="0" && $res[3]==="0"&&$res[4]==="0"){
-            $this->flag="A";
+        var_dump($op);
+        If(($res[0]!="0") && in_array($op,$this->tabToken )){
+            $res[2]=$op;
         }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]=="0" && $res[2]=="0" && $res[3]=="0"&&$res[4]==="0"){
-            $this->flag="B";
-        }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" &&$res[1]=="0" && $res[3]==="0"&& $res[4]==="0"){
-            $this->flag="C";
-        }
-        elseif(in_array($res[0],$this->tabToken ) && $res[1]==="+" && in_array($res[2],$this->tabToken ) && $res[3]==="0"&& $res[4]==="0"){
-            $this->flag="D";
+        elseif(($res[0]=="0") && in_array($op,$this->tabToken )){
+            $res[0]=$op;
         }
         else
         {
-           // var_dump($res);
-           // var_dump("Illegal operation");
+             var_dump("Illegal operation");
         }
 
-        //var_dump($res);
-
+         var_dump($res);
+        $this->flag=$res;
         return $this->flag;
-    }
-
-    public function addOperator1($res,$op1)
-    {
-            $this->tab3=$res;
-            $this->tab3[0]=$op1;
-            return  $this->tab3;
-    }
-    public function addOperator2($res,$op1)
-    {
-        $this->tab3=$res;
-        $this->tab3[2]=$op1;
-        return  $this->tab3;
     }
 
     public function addPlus($res,$plus)
@@ -83,6 +63,18 @@ class Service
         else{
             var_dump('hii2');
         }
+    }
+
+    public function addEgalResultat($res,$egal){
+
+        if(($res[0]=="0") && in_array($res[0],$this->tabToken && res[2]=="0") && in_array($res[2],$this->tabToken ))
+        {
+            $this->tab3=$res;
+            $this->tab3[1]=$egal;
+
+        }
+
+
     }
 
     public function actionClean($res,$clean)
@@ -108,22 +100,7 @@ class Service
         }
     }
 
-
-
-    public function controllData($op1)
-    {
-
-        if (in_array($op1,$this->tabToken )){
-            $this->op1=$op1;
-           // var_dump($this->op1);
-            $this->tab3[0]=$this->op1;
-
-             return  $this->tab3;
-        }
-        else{
-            var_dump('hii2');
-        }
-    }
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     
     
