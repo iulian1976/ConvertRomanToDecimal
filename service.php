@@ -46,7 +46,7 @@ class Service
              var_dump("Illegal operation");
         }
 
-         var_dump($res);
+         //var_dump($res);
         $this->flag=$res;
         return $this->flag;
     }
@@ -67,13 +67,12 @@ class Service
 
     public function addEgalResultat($res,$egal){
 
-        if(($res[0]=="0") && in_array($res[0],$this->tabToken && res[2]=="0") && in_array($res[2],$this->tabToken ))
+        if(in_array($res[0],$this->tabToken) && in_array($res[2],$this->tabToken ))
         {
+            $res[3] = $egal;
             $this->tab3=$res;
-            $this->tab3[1]=$egal;
-
+            return $this->tab3;
         }
-
 
     }
 
@@ -82,7 +81,6 @@ class Service
         var_dump($res);
         $plusArray=['*'] ;
         if (in_array($clean,$plusArray )){
-
             for ($i=count($res)-1;$i>=0;$i--){
                 if($res[$i]!="0")
                 {
@@ -90,7 +88,6 @@ class Service
                     break;
                 }
             }
-
             $this->tab3=$res;
 
             return  $this->tab3;
@@ -100,11 +97,6 @@ class Service
         }
     }
 
-    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    
-    
-    
     
     public function additionRomaine($op1,$op2)
     {
@@ -186,6 +178,7 @@ class Service
 
         $tabdrev = array_reverse($tabd);
         $tabrrev = array_reverse($tabr);
+        
         $j=0;
         foreach($tabdrev  as $key=>$value){
 
@@ -207,15 +200,9 @@ class Service
                     $op= $rest;
                 }
             }
-
-
         }
 
-        //var_dump($this->tabredd);
-
-        //implode(",", $this->tabredd);
-
-        return  implode(",", $this->tabredd);
+        return  implode("", $this->tabredd);
     }
 
 }

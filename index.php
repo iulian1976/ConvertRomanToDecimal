@@ -24,6 +24,10 @@ include_once('service.php');
 	</head>
 	<body>
 		<div id="container">
+            <div class="spacearound">
+                <p><strong> developed by Iulian AMARIEI| contact: it.12gilgal@gmail.com|iulian_bulan@yahoo.com</a></strong>
+                </p>
+            </div>
 			<div id="calculator">
                 <form action="InterfaceController.php" method="post">
                         <div id="result">
@@ -56,10 +60,14 @@ include_once('service.php');
 
 	                            }
 	                            else{
-		                            echo $res[3].$res[4];            
+		                            echo $res[3];
 	                            }
+                                if($res[4]=="0"){
 
-
+                                }
+                                else{
+                                    echo $res[4];
+                                }
                             ?>
                             </div>
                         </div>
@@ -73,7 +81,7 @@ include_once('service.php');
                             <input class="number" type='submit' name = 'op1'    value = 'II' id="2">
                             <input class="number" type='submit' name = 'op1'    value = 'III' id="3">
                             <input class="number" type='submit' name = 'op1'    value = 'IV' id="4">
-                            <input class="number" type='submit' name = 'op1'    value = 'V' id="5"
+                            <input class="number" type='submit' name = 'op1'    value = 'V' id="5">
                             <input class="number" type='submit' name = 'op1'    value = 'VI' id="6">
                             <input class="number" type='submit' name = 'op1'    value = 'VII' id="7">
                             <input class="number" type='submit' name = 'op1'    value = 'VIII' id="8">
@@ -89,8 +97,8 @@ include_once('service.php');
                             <input class="number" type='submit' name = 'op1'    value = 'M' id="1000">
                         </div>
                 </form>
-			</div>
-		</div>
-
+                </div>
+			</div>                                                                                                                  
+        </div>
 	</body>
 </html>
