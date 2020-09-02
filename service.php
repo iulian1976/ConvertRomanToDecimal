@@ -13,9 +13,9 @@ class Service
     private $nbr1;
     private $nbr2;
     private $result;
-    private $tab3= ['0','0','0','0','0'];
-    private $tabToken = ["I","II","III", "IV", "V","VI","VII","VIII", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
-    private $flag="";
+    private $arrayResult= ['0','0','0','0','0'];
+    private  $tabDecimal = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
+    private $tabToken = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
 
     public function __construct()  
     {
@@ -34,21 +34,29 @@ class Service
     
     public function controllSessionArray($res,$op)
     {
-        var_dump($op);
-        If(($res[0]!="0") && in_array($op,$this->tabToken )){
+
+        $arrayOperator=str_split($op);
+        if(($res[0]=="0") && array_intersect($this->tabToken, $arrayOperator) && $res[1]=="0" ) {
+        $res[0]=$op;
+        }
+        elseif(($res[0]!="0") && array_intersect($this->tabToken, $arrayOperator) && $res[1]=="0" ){
+            var_dump($op);
+            var_dump($res);
+            $res[0]=$res[0].$op;
+            var_dump($res);
+        }
+        elseif($res[0]!="0" && array_intersect($this->tabToken, $arrayOperator) && $res[1]=="+" && $res[2]=="0" ){
             $res[2]=$op;
         }
-        elseif(($res[0]=="0") && in_array($op,$this->tabToken )){
-            $res[0]=$op;
+        elseif($res[0]!="0" && array_intersect($this->tabToken, $arrayOperator) && $res[1]=="+" && $res[2]!="0" ){
+            $res[2]=$res[2].$op;
         }
         else
         {
-             var_dump("Illegal operation");
+            return $this->arrayResult;
         }
-
-         //var_dump($res);
-        $this->flag=$res;
-        return $this->flag;
+        $this->arrayResult= $res;
+        return $this->arrayResult;
     }
 
     public function addPlus($res,$plus)
@@ -56,24 +64,21 @@ class Service
         $plusArray=['+'] ;
         if (in_array($plus,$plusArray )){
 
-            $this->tab3=$res;
-            $this->tab3[1]=$plus;
-            return  $this->tab3;
+            $this->arrayResult=$res;
+            $this->arrayResult[1]=$plus;
+            return  $this->arrayResult;
         }
         else{
-            var_dump('hii2');
+            $res=['0','0','0','0','0'];
+            $this->arrayResult=$res;
+            return  $this->arrayResult;
         }
     }
 
     public function addEgalResultat($res,$egal){
-
-        if(in_array($res[0],$this->tabToken) && in_array($res[2],$this->tabToken ))
-        {
             $res[3] = $egal;
-            $this->tab3=$res;
-            return $this->tab3;
-        }
-
+            $this->arrayResult=$res;
+            return $this->arrayResult;
     }
 
     public function actionClean($res,$clean)
@@ -88,12 +93,12 @@ class Service
                     break;
                 }
             }
-            $this->tab3=$res;
+            $this->arrayResult=$res;
 
-            return  $this->tab3;
+            return  $this->arrayResult;
         }
         else{
-            var_dump('hii2');
+            return  $this->arrayResult;
         }
     }
 
@@ -131,13 +136,8 @@ class Service
 
     public function convertToDec($tab)
     {
-        $tabd = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
-        $tabr = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
-
-
-
-        $tabdrev = array_reverse($tabd);
-        $tabrrev = array_reverse($tabr);
+        $tabdrev = array_reverse($this->tabDecimal);
+        $tabrrev = array_reverse($this->tabToken);
 
 
         foreach ($tab as $key => $value) {
@@ -172,12 +172,8 @@ class Service
 
     public function convertDecToRomaine($op){
 
-        $tabd = [1,4,5,9,10,40,50,90,100,400,500,900,1000];
-        $tabr=["I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"];
-
-
-        $tabdrev = array_reverse($tabd);
-        $tabrrev = array_reverse($tabr);
+        $tabdrev = array_reverse($this->tabDecimal);
+        $tabrrev = array_reverse($this->tabToken);
         
         $j=0;
         foreach($tabdrev  as $key=>$value){
