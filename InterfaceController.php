@@ -21,7 +21,7 @@ include_once('service.php');
 	            var_dump( $situationSession);
 	            session_unset();
 	            $_SESSION['res'] = $situationSession;
-	           // header('location:index.php');
+	            header('location:index.php');
            }
             if(isset($_POST['plus'])){
 	            $plus=$_POST['plus'];
@@ -29,7 +29,7 @@ include_once('service.php');
 	            $res= $controllSession->addPlus($res,$plus);
 	            session_unset();
 	            $_SESSION['res'] = $res;
-	            //header('location:index.php');
+	            header('location:index.php');
 
 
            }
@@ -43,7 +43,7 @@ include_once('service.php');
 	            session_unset();
 	            $_SESSION['res'] = $res;
 	            var_dump($res);
-	           // header('location:index.php');
+	            header('location:index.php');
 
 			}
 
