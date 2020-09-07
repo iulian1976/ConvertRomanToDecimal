@@ -14,6 +14,8 @@ include_once('service.php');
 
      }
 
+    // var_dump($_SESSION['res']);
+
 ?>
 
 <html>

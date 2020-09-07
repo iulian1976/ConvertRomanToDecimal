@@ -76,9 +76,16 @@ class Service
     }
 
     public function addEgalResultat($res,$egal){
+        if ($res[0]!="0" && $res[2]!="0"  ) {
             $res[3] = $egal;
+            $this->arrayResult = $res;
+            return $this->arrayResult;
+        }
+        else{
+            $res=['0','0','0','0','0'];
             $this->arrayResult=$res;
             return $this->arrayResult;
+        }
     }
 
     public function actionClean($res,$clean)
